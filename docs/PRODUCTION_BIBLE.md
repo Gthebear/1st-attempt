@@ -153,6 +153,28 @@ achieving reliable identity lock without training (see §3-4). Revisit only if a
 concrete consistency failure shows up that reference-conditioning can't fix — don't build this
 pre-emptively.
 
+## 7b. Model integrity check (2026-09-13, safetensors header parse — no generation run)
+
+Every model file the pipeline and the new ControlNet setup depend on was verified structurally
+intact (header parses, tensor count sane, not truncated):
+
+| File | Size | Tensors |
+|---|---|---|
+| `qwen_image_edit_2509_fp8_e4m3fn.safetensors` | 20.4GB | 1933 |
+| `Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors` | 849.6MB | 2160 |
+| `qwen_2.5_vl_7b_fp8_scaled.safetensors` | 9.4GB | 1446 |
+| `qwen_image_vae.safetensors` | 253.8MB | 194 |
+| `Qwen-Image-InstantX-ControlNet-Union.safetensors` | 3.5GB | 181 |
+| `hunyuanvideo15_vae_fp16.safetensors` | 2.5GB | 218 |
+| `sigclip_vision_patch14_384.safetensors` | 856.5MB | 448 |
+| `hunyuanvideo1.5_480p_i2v_step_distilled_fp8_scaled.safetensors` | 8.3GB | 1932 |
+| `byt5_small_glyphxl_fp16.safetensors` | 438.6MB | 111 |
+
+Note: the Hunyuan-side models (`hunyuanvideo15_vae_fp16`, `sigclip_vision_patch14_384`,
+`hunyuanvideo1.5_480p_i2v_step_distilled_fp8_scaled`, `byt5_small_glyphxl_fp16`) live directly
+under `~/ComfyUI-ltx25/models/`, not in the shared `~/ComfyUI` store like the Qwen-side models —
+worth knowing if you're ever chasing a "model not found" error.
+
 ## 8. Open items for Chris
 
 1. Where's the actual episode script/dialogue? Nothing found locally or on GitHub.

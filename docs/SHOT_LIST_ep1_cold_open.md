@@ -31,8 +31,8 @@ below). Setup only — no shots generated.
 | Mother | `smith_mother.png` exists, clear reference | **Not used** — she doesn't appear in this scene. |
 | EXT. suburban street | `smith_street_view.png` — "STREET VIEW & COMMUNITY LAYOUT," matches the script beat almost exactly (monorail on stilts, skyline beyond, rain, residential street) | Yes, strong match |
 | INT. kitchen | `locked_iris_kitchen_chris.png` — already validated end-to-end (rendered clip exists) | Yes, proven |
-| INT. upstairs hallway | **Nothing.** No reference exists. | **Blocked** |
-| INT. Jacob's room | **Nothing.** No reference exists. | **Blocked** |
+| INT. upstairs hallway | **Nothing.** Checked both `input/` folders in full (including the `3d/`, `_archive/`, and `AI Avatars/` subfolders) — no bedroom/hallway/interior asset exists anywhere on this machine. | **Blocked** |
+| INT. Jacob's room | **Nothing.** Same exhaustive check as above. | **Blocked** |
 | House exterior | `smith_residence_exterior.png` — see naming issue above | Usable, name issue aside |
 
 ## Shot list

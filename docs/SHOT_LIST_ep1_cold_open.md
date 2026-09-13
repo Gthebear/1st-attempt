@@ -2,7 +2,16 @@
 
 Built 2026-09-13 against the real script (`script_episode1_cold_open.md`) and the actual
 reference images (viewed directly, not inferred from filenames — two real discrepancies found
-below). Setup only — no shots generated.
+below).
+
+**Update 2026-09-14, with generation clearance**: all 8 ready shots (2.2, 2.7, 5.1-5.4, 1.1,
+1.3) generated end-to-end via `benchmarks/2026-09-13/generate_ep1_shots.py` — Qwen Edit still
++ Hunyuan i2v clip each, all verified valid. Ambience audio generated via Stable Audio 3.
+Three partial sequences assembled and sent to Chris: `ep1_scene1_street.mp4` (6.75s),
+`ep1_scene2_kitchen_open.mp4` (10.125s, includes the proven 2.1 + new 2.2/2.7),
+`ep1_scene5_kitchen_climax.mp4` (13.5s, the green→red marker beat). All in
+`output/video/`. Visual quality checked directly (not just "did it not crash"): identity held
+throughout, style consistent, red marker reads clearly and dramatically in 5.3/5.4.
 
 ## Continuity issues found — need Chris's call before generating
 

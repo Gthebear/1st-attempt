@@ -1,0 +1,256 @@
+{
+  "id": "d6814114-45ec-4432-8aa8-15a1d08dd55c",
+  "revision": 0,
+  "last_node_id": 26,
+  "last_link_id": 33,
+  "nodes": [
+    {
+      "id": 20,
+      "type": "LoadAudio",
+      "pos": [
+        -35.50478505338169,
+        147.91684742338992
+      ],
+      "size": [
+        282.798828125,
+        136
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            28,
+            30
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.5.1",
+        "Node name for S&R": "LoadAudio"
+      },
+      "widgets_values": [
+        "VOICE_SIERRA_ref.wav",
+        null,
+        null
+      ]
+    },
+    {
+      "id": 12,
+      "type": "LoadAudio",
+      "pos": [
+        -34.20996863529223,
+        -207.3536826807498
+      ],
+      "size": [
+        282.798828125,
+        136
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            18,
+            20,
+            23,
+            29,
+            32
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.5.1",
+        "Node name for S&R": "LoadAudio"
+      },
+      "widgets_values": [
+        "VOICE_IRIS_ref.wav",
+        null,
+        null
+      ]
+    },
+    {
+      "id": 23,
+      "type": "FL_ChatterboxDialogTTS",
+      "pos": [
+        615.3417155903248,
+        379.15894178321156
+      ],
+      "size": [
+        400,
+        356
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "speaker_A_Audio",
+          "type": "AUDIO",
+          "link": 29
+        },
+        {
+          "name": "speaker_B_Audio",
+          "type": "AUDIO",
+          "link": 30
+        },
+        {
+          "name": "speaker_C_Audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "speaker_D_Audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "dialog_audio",
+          "type": "AUDIO",
+          "links": [
+            31
+          ]
+        },
+        {
+          "name": "speaker_a_audio",
+          "type": "AUDIO",
+          "links": null
+        },
+        {
+          "name": "speaker_b_audio",
+          "type": "AUDIO",
+          "links": null
+        },
+        {
+          "name": "speaker_c_audio",
+          "type": "AUDIO",
+          "links": null
+        },
+        {
+          "name": "speaker_d_audio",
+          "type": "AUDIO",
+          "links": null
+        },
+        {
+          "name": "message",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "filliptm/ComfyUI_Fill-ChatterBox",
+        "ver": "e0f3a489f9f72d3347f61b5fe8da281430eb20df",
+        "Node name for S&R": "FL_ChatterboxDialogTTS"
+      },
+      "widgets_values": [
+        "SPEAKER A: Ten minutes was generous.\nSPEAKER B: It's educational.\nSPEAKER A: It's a racing game.\nSPEAKER B: Educational racing game.\nSPEAKER B: Do you sleep?\nSPEAKER A: No.\nSPEAKER B: Ever get bored?\nSPEAKER A: Not yet.",
+        0.5,
+        0.5,
+        0.8,
+        0,
+        "randomize",
+        false,
+        false
+      ],
+      "color": "#16727c",
+      "bgcolor": "#4F0074"
+    },
+    {
+      "id": 24,
+      "type": "PreviewAudio",
+      "pos": [
+        1098.8488879717245,
+        378.6384238512216
+      ],
+      "size": [
+        348.560906069926,
+        88
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 31
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.5.1",
+        "Node name for S&R": "PreviewAudio"
+      },
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    [
+      29,
+      12,
+      0,
+      23,
+      0,
+      "AUDIO"
+    ],
+    [
+      30,
+      20,
+      0,
+      23,
+      1,
+      "AUDIO"
+    ],
+    [
+      31,
+      23,
+      0,
+      24,
+      0,
+      "AUDIO"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Group",
+      "bounding": [
+        -45.50478505338169,
+        -1138.4343442640427,
+        1502.9145790950322,
+        1883.5932860472542
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.4815769309148436,
+      "offset": [
+        732.4394040290586,
+        1134.7214387004035
+      ]
+    },
+    "workflowRendererVersion": "LG",
+    "frontendVersion": "1.34.9"
+  },
+  "version": 0.4
+}

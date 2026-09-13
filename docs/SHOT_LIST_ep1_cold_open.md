@@ -69,7 +69,18 @@ below). Setup only — no shots generated.
 - **1.3** push toward the house → `qwen_edit_ep1_shot13_push_to_house.json` (ref: `smith_residence_exterior.png`, mind the naming issue)
 
 ### Not built — needs a decision or new asset first
-- **2.4-2.6** (James + Iris together, dialogue coverage, James exits) — needs two-character compositing, untested territory, worth a deliberate first test rather than batch-building blind.
+- **2.4-2.6** (James + Iris together, dialogue coverage, James exits) — needs two-character
+  compositing. **Confirmed technically supported**: `TextEncodeQwenImageEditPlus` (the node
+  already at the core of the proven pipeline) natively takes `image1`/`image2`/`image3`
+  optional inputs, and the subgraph in `qwen_edit_2509.json` already exposes `image2 (optional)`
+  and `image3 (optional)` ports wired straight to both the positive and negative prompt nodes
+  (verified via the subgraph's internal link list, not guessed). What's *not* done: wiring an
+  actual second `LoadImage` node (→ `smith_father.png`) to that port requires adding a new node
+  + link to the graph, not just patching an existing widget value — that's a materially
+  different (and untested) kind of edit than everything else built tonight, which only ever
+  patched values on existing nodes. Recommend this be the **first** render of the night once
+  you're back — a single deliberate test, not a batch — rather than trusting a hand-spliced
+  graph I couldn't execute to verify.
 - **Scene 3 & 4** (hallway, Jacob's room) — no location reference exists for either.
 - Generator script: `benchmarks/2026-09-13/build_iris_kitchen_shots.py` — rerunning it regenerates all 8 files above from the proven `qwen_edit_2509.json` base; extend the `SHOTS` list to add more.
 

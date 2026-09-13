@@ -121,9 +121,21 @@ wants `protobuf<3.20`. The server restarts clean and both node packs *import* su
 this hasn't been exercised by an actual TTS run — if a FishAudio generation throws a protobuf
 error, pin protobuf down or isolate FishAudioS2 into its own venv.
 
-**Open gap**: no character voice references exist. Before any dialogue audio can be produced,
-decide per character: synthetic base voice (pick from ChatterBox/FishAudio's built-ins) vs.
-recorded/cloned reference (needs a clean ~10-20s sample per character).
+**Open gap**: no character voice references exist. Confirmed via `/object_info`:
+`FL_ChatterboxDialogTTS`'s `speaker_A_Audio` and `speaker_B_Audio` are **required** inputs —
+the node cannot run at all without at least two voice reference clips. Before any dialogue
+audio can be produced, decide per character: synthetic base voice (pick from ChatterBox/
+FishAudio's built-ins) vs. recorded/cloned reference (needs a clean ~10-20s sample per
+character).
+
+Two dialogue workflows are already built and waiting on those files:
+`workflows/chatterbox_dialog_ep1_kitchen_james_iris.json` (Iris/James, 4 lines) and
+`workflows/chatterbox_dialog_ep1_hallway_sierra_iris.json` (Iris/Sierra, 8 lines) — both built
+from the ChatterBox node's own example workflow (safest possible base, ships from the author),
+with placeholder filenames `VOICE_IRIS_ref.wav` / `VOICE_JAMES_ref.wav` /
+`VOICE_SIERRA_ref.wav` that don't exist yet. Drop in real files under those names and both
+workflows should run as-is. See `docs/SHOT_LIST_ep1_cold_open.md` for the full line breakdown
+and voice-casting notes (age/gender/tone per character).
 
 ## 6. ControlNet (installed tonight, 2026-09-13)
 

@@ -50,7 +50,7 @@ All files live in `~/ComfyUI-ltx25/input/` (copied from `~/ComfyUI/input/`, the 
 |---|---|
 | **Iris** (android caregiver, protagonist) | `andr_turnaround.png` (identity/multi-angle), `andr_expression_matrix.png`, `andr_mechanical_detail.png`, `andr_env_light_street.png`, `andr_env_light_warehouse.png`, `andr_arsenal_external_weapon.png`, `andr_arsenal_trenchcoat_modular.png`, `andr_arsenal_transforming_hands.png` |
 | **Smith family** | `smith_mother.png`, `smith_father.png`, `smith_daughter_items.png`, `smith_son_items.png`, `smith_kids_figures.png`, `smith_residence_exterior.png`, `smith_street_view.png`, `smith_transport_harbor.png` |
-| **Antagonists** | `breaker_x_reference.png`, `vanguard_e_reference.png` |
+| **Antagonists** | `breaker_x_reference.png` — **Breaker-X**, "Black-market brute, Serial B-665": heavy bulky industrial mech, orange/rust weathering, reinforced actuator pistons, exposed wiring, no face (fully armored). `vanguard_e_reference.png` — **Vanguard-E**, "Enforcer-class, Serial V-01": sleek black armored humanoid, integrated forearm blade mechanism, glowing red visor, monomolecular edge blade, power core/thrusters. Both are full mech designs, not humans in armor — no face to identity-lock, the whole silhouette is the character. |
 | **Locked hero shots** | `locked_iris_kitchen_chris.png` — validated end-to-end, produced `output/video/hunyuan_video_1.5_00010_.mp4` (3.375s, silent, clean identity lock, no OOM) |
 
 Chris's own likeness set (`locked_shot*_chris.png`, `chris_ref.jpg`) is a **separate** project
@@ -164,6 +164,19 @@ acceptably here, and the existing reference-image-conditioned Qwen Edit pipeline
 achieving reliable identity lock without training (see §3-4). Revisit only if a specific,
 concrete consistency failure shows up that reference-conditioning can't fix — don't build this
 pre-emptively.
+
+## 6b. Ambience / SFX (installed tonight, 2026-09-13)
+
+Downloaded **Stable Audio 3 Small-SFX** (`stable_audio_3_small_sfx.safetensors`, 2.3GB,
+`~/ComfyUI/models/checkpoints/`) + its text encoder (`t5gemma_b_b_ul2.safetensors`, 1.2GB,
+`~/ComfyUI/models/text_encoders/`) — purpose-built for SFX/short ambiance (vs. the general
+music-oriented 1.0 model), runs on ≤8GB VRAM, native ComfyUI support (`CheckpointLoaderSimple`
++ `CLIPLoader` + `KSampler` + `VAEDecodeAudio`, no custom nodes). Both files integrity-verified.
+
+Workflow built: `workflows/stable_audio3_ep1_kitchen_ambience.json` — "soft rain, distant city
+hum, occasional kitchen clink," 60s placeholder duration (adjust once the picture edit's actual
+length is known). This is a separate tool from the ChatterBox/FishAudio dialogue setup in §5 —
+ambience/SFX vs. character voice are different jobs, don't conflate them.
 
 ## 7b. Model integrity check (2026-09-13, safetensors header parse — no generation run)
 

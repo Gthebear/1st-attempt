@@ -1,0 +1,93 @@
+# Episode 1 Cold Open ("Green") — Shot list & asset audit
+
+Built 2026-09-13 against the real script (`script_episode1_cold_open.md`) and the actual
+reference images (viewed directly, not inferred from filenames — two real discrepancies found
+below). Setup only — no shots generated.
+
+## Continuity issues found — need Chris's call before generating
+
+1. **House name mismatch.** `smith_residence_exterior.png` reads **"RESIDENCE EXTERIOR (THE
+   McNEIL HOME)"** in-image. The script says **"SMITH HOUSE"** throughout. Either an earlier
+   draft used "McNeil" before the family was renamed, or this asset is misfiled. If any signage/
+   text ever needs to render in-shot (mailbox, delivery label) this will show the wrong name.
+   Flagging rather than guessing which is correct.
+2. **Marker color mismatch.** The script's climax: *"green fading, replaced by a slow-rising
+   amber, the first time we've seen it change."* But the actual character design sheet
+   (`andr_mechanical_detail.png`) only establishes **two** marker states: green and **red** —
+   no amber anywhere in the reference set, including the tactical/armed loadout sheet
+   (`andr_arsenal_trenchcoat_modular.png`), which is still green. Recommend using **red**
+   for shot 5.3/5.4 to match the established design bible, unless Chris wants amber as a
+   deliberate third state — that would need a new reference sheet made first (generation,
+   not done tonight).
+
+## Asset audit (confirmed by actually viewing the images, not just filenames)
+
+| Character/location | What's actually there | Usable for this episode? |
+|---|---|---|
+| Iris | `andr_turnaround.png` (6-angle, apron/blue dress "domestic mode"), `andr_expression_matrix.png` (9 expressions, green marker), `andr_mechanical_detail.png` (green vs. red marker states, hand/eye detail), `andr_arsenal_trenchcoat_modular.png` (tactical loadout, marker still green — this is a *mode* not a marker-color thing) | Yes, well covered |
+| James Smith | `smith_father.png` — single clear 3/4 reference, "FATHER (GENTLE, NORMAL)" | Yes, adequate for medium/wide shots. No turnaround, so extreme angles are a stretch. |
+| Sierra Smith (12) | `smith_kids_figures.png` (clear face, red/orange curly hair, jacket — she's the left figure), `smith_daughter_items.png` (props/wardrobe only, no face) | Yes, one clear reference. Single angle only — no turnaround. |
+| Jacob Smith (10) | `smith_kids_figures.png` (right figure, short blond hair), `smith_son_items.png` (props/wardrobe only, no face) | Yes, one clear reference, same limitation. |
+| Mother | `smith_mother.png` exists, clear reference | **Not used** — she doesn't appear in this scene. |
+| EXT. suburban street | `smith_street_view.png` — "STREET VIEW & COMMUNITY LAYOUT," matches the script beat almost exactly (monorail on stilts, skyline beyond, rain, residential street) | Yes, strong match |
+| INT. kitchen | `locked_iris_kitchen_chris.png` — already validated end-to-end (rendered clip exists) | Yes, proven |
+| INT. upstairs hallway | **Nothing.** No reference exists. | **Blocked** |
+| INT. Jacob's room | **Nothing.** No reference exists. | **Blocked** |
+| House exterior | `smith_residence_exterior.png` — see naming issue above | Usable, name issue aside |
+
+## Shot list
+
+### Scene 1 — EXT. Suburban street, night, rain
+- **1.1** Wide static establishing — street, monorail on stilts, skyline glow beyond, rain on car roofs. Ref: `smith_street_view.png`.
+- **1.2** (optional, minor) delivery drone passing overhead — connective tissue, skippable if time-limited.
+- **1.3** Slow push toward the one warm-lit house. Ref: `smith_residence_exterior.png` (mind the name issue).
+
+### Scene 2 — INT. Kitchen, continuous
+- **2.1** Wide/medium, Iris drying a plate at the counter. **Already proven** — reuse `locked_iris_kitchen_chris.png` / `output/video/hunyuan_video_1.5_00010_.mp4` directly, no new render needed.
+- **2.2** Medium, she sets the plate down, notices the inhaler, moves it to a drawer. *(Built tonight as `qwen_edit_ep1_shot22_notices_inhaler.json`, prompt matches the actual script action.)*
+- **2.3** Insert/cutaway — neon skyline through the window, rain. Can reuse the window portion of the locked kitchen still, or `andr_env_light_street.png` framing.
+- **2.4** James enters, pours water at the tap. **New**: two-character shot (Iris + James) — no precedent yet for compositing two character refs into one Qwen Edit still. First one to test.
+- **2.5** Dialogue coverage (shot/reverse or OTS) for the "Sierra still awake?" exchange (4 lines).
+- **2.6** James glances at the window, exits.
+- **2.7** Close-up, Iris watching him go, green marker steady, calm/thoughtful. *(Built tonight as `qwen_edit_ep1_shot27_watches_james_leave.json`.)*
+
+### Scene 3 — INT. Upstairs hallway (Sierra's room), moments later — **BLOCKED, no location reference**
+- 3.1 Sierra under the covers with a tablet.
+- 3.2 Iris/Sierra dialogue (6 lines), Iris takes the tablet.
+
+### Scene 4 — INT. Jacob's room, continuous — **BLOCKED, no location reference**
+- 4.1 Jacob half-asleep, Iris straightens the blanket, turns off the lamp. No dialogue this scene.
+
+### Scene 5 — INT. Kitchen, later
+- **5.1** Iris alone, wiping the counter, rain against the window, marker steady. Variant of the proven kitchen still — solo, no plate. *(Built tonight: `qwen_edit_ep1_shot51_alone_wiping_counter.json`.)*
+- **5.2** She pauses, head tilts — reaction beat, hears car doors/voices. *(Built tonight: `qwen_edit_ep1_shot52_reaction_head_tilt.json`.)*
+- **5.3** She turns fully toward the window, marker shifts (green → **red**, pending Chris's call above). *(Built tonight: `qwen_edit_ep1_shot53_turns_marker_shifts.json` — uses red.)*
+- **5.4** Hold on her face — the episode's money shot. Marker in its new state, tension, cut to black. *(Built tonight: `qwen_edit_ep1_shot54_hold_on_face_red.json`.)*
+
+### Also built tonight
+- **1.1** street establishing → `qwen_edit_ep1_shot11_street_establishing.json` (ref: `smith_street_view.png`)
+- **1.3** push toward the house → `qwen_edit_ep1_shot13_push_to_house.json` (ref: `smith_residence_exterior.png`, mind the naming issue)
+
+### Not built — needs a decision or new asset first
+- **2.4-2.6** (James + Iris together, dialogue coverage, James exits) — needs two-character compositing, untested territory, worth a deliberate first test rather than batch-building blind.
+- **Scene 3 & 4** (hallway, Jacob's room) — no location reference exists for either.
+- Generator script: `benchmarks/2026-09-13/build_iris_kitchen_shots.py` — rerunning it regenerates all 8 files above from the proven `qwen_edit_2509.json` base; extend the `SHOTS` list to add more.
+
+## Dialogue lines (for ChatterboxDialogTTS / FishS2MultiSpeakerTTS setup, not run tonight)
+
+| Speaker | Lines | Voice notes |
+|---|---|---|
+| **James** | "Sierra still awake?" / "She'll say twenty." / "Good night for staying in." | Adult male, warm, tired-but-content |
+| **Iris** | "Reading. I told her lights out in ten." / "I said ten." / "Ten minutes was generous." / "It's a racing game." / "No." / "Not yet." | Adult female, measured, precise, minimal inflection — android calm, never rushed |
+| **Sierra** | "It's educational." / "Educational racing game." / "Do you sleep?" / "Ever get bored?" | 12-year-old girl, a little cheeky/testing |
+| **Jacob** | *(none — he's asleep/half-asleep throughout)* | n/a for this scene |
+
+Still no voice samples for any of these four — see PRODUCTION_BIBLE.md §5 gap. Casting notes
+above are enough to pick sensible synthetic base voices once you're ready.
+
+## What's genuinely ready to generate first (once you're back and want to)
+Scene 2 (kitchen) is the safest starting point — proven environment, proven identity-lock,
+existing shot2/shot3 workflow files already built. Scenes 1 and 5 are next (good references,
+no new compositing challenges). Scenes 3 and 4 need a location reference generated first.
+Shot 2.4 (Iris + James together) is the first real test of multi-character compositing in this
+pipeline — worth doing as a deliberate small test before assuming it works.
